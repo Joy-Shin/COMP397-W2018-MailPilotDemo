@@ -29,23 +29,16 @@ var scenes;
         // Public Methods
         // Initialize Game Variables and objects
         PlayScene.prototype.Start = function () {
-            this._playLabel = new objects.Label("Game Playing", "40px", "Consolas", "#000000", 320, 240, true);
-            this._nextButton = new objects.Button(this.assetManager, "nextButton", 500, 340);
-            this._backButton = new objects.Button(this.assetManager, "backButton", 150, 340);
+            this._ocean = new objects.Ocean(this.assetManager);
             this.Main();
         };
         PlayScene.prototype.Update = function () {
+            this._ocean.Update();
         };
         // This is where the fun happens
         PlayScene.prototype.Main = function () {
-            // add the welcome label to the scene
-            this.addChild(this._playLabel);
-            // add the nextButton to the scene
-            this.addChild(this._nextButton);
-            // add the backButton to the scene
-            this.addChild(this._backButton);
-            this._nextButton.on("click", this._nextButtonClick);
-            this._backButton.on("click", this._backButtonClick);
+            // add ocean to the scene
+            this.addChild(this._ocean);
         };
         return PlayScene;
     }(objects.Scene));

@@ -1,10 +1,9 @@
 module scenes {
     export class PlayScene extends objects.Scene {
       // Private Instance Variables
-      private _playLabel: objects.Label;
-      private _backButton: objects.Button;
-      private _nextButton: objects.Button;
-  
+      private _ocean: objects.Ocean;
+      
+
       // Public Properties
   
       // Constructor
@@ -28,29 +27,18 @@ module scenes {
   
       // Initialize Game Variables and objects
       public Start(): void {
-        this._playLabel = new objects.Label("Game Playing", "40px", "Consolas", "#000000", 320, 240, true);
-        this._nextButton = new objects.Button(this.assetManager, "nextButton", 500, 340);
-        this._backButton = new objects.Button(this.assetManager, "backButton", 150, 340);
+        this._ocean = new objects.Ocean(this.assetManager);
         this.Main();
       }
   
       public Update(): void {
-  
+        this._ocean.Update();
       }
   
       // This is where the fun happens
       public Main(): void {
-        // add the welcome label to the scene
-        this.addChild(this._playLabel);
-  
-        // add the nextButton to the scene
-        this.addChild(this._nextButton);
-
-        // add the backButton to the scene
-        this.addChild(this._backButton);
-
-        this._nextButton.on("click", this._nextButtonClick);
-        this._backButton.on("click", this._backButtonClick);
+        // add ocean to the scene
+        this.addChild(this._ocean);
       }
     }
   }
