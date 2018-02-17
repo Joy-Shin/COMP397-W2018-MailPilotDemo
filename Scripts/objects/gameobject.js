@@ -12,14 +12,14 @@ var objects;
 (function (objects) {
     var GameObject = /** @class */ (function (_super) {
         __extends(GameObject, _super);
-        //Constructors
+        // Constructors
         function GameObject(assetManager, imageString) {
             var _this = _super.call(this, assetManager.getResult(imageString)) || this;
             _this.name = imageString;
             _this._initialize();
             return _this;
         }
-        //Pirvate Methods
+        // Private Methods
         GameObject.prototype._initialize = function () {
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
@@ -28,22 +28,18 @@ var objects;
             this.regX = this.halfWidth;
             this.regY = this.halfHeight;
         };
-        //Public Methods
-        //Initialization
-        GameObject.prototype.Start = function () {
-            this._dy = 5; // move 5 pixels down every frame
-        };
+        // Public Methods
+        // Initialization
         GameObject.prototype.Reset = function () {
         };
         GameObject.prototype.CheckBounds = function () {
         };
         GameObject.prototype.Move = function () {
-            this.y += this._dy;
         };
-        //Update the Object every frame
+        GameObject.prototype.Start = function () {
+        };
+        // Updates the Object every frame
         GameObject.prototype.Update = function () {
-            this.Move();
-            this.CheckBounds();
         };
         return GameObject;
     }(createjs.Bitmap));
